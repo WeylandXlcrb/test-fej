@@ -1,0 +1,243 @@
+@import 'partials/_mixins.scss';
+@import 'partials/_vars.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,500');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: $dark_brown;
+    font-family: "Oswald", sans-serif;
+    font-size: $size-2;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main {
+    @include flex-column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.notes {
+  @include list-reset;
+  @include flex-column;
+  width: 100%;
+  padding: 20px;
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  @media screen and (min-width: $desktop) {
+    justify-content: flex-start;
+  }
+}
+.note {
+  @include flex-column;
+  height: 500px;
+  margin-bottom: 20px;
+  position: relative;
+  // &:hover &__group--input {
+  //   display: flex;
+  // }
+  @media screen and (min-width: $tablet) {
+    width: 47.5%;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 22.5%;
+    margin-right: 2.5%;
+  }
+  &__group {
+    @include flex-column;
+    align-items: center;
+    background: $beje-lg;
+    width: 100%;
+    padding: 15px;
+    border-radius: 7px;
+    flex: 1 0 auto;
+    &--input {
+      flex-direction: row;
+      margin-top: 8px;
+      justify-content: space-between;
+      max-height: 80px;
+      // display: none;
+      & textarea {
+        background: none;
+        border: none;
+        height: 50px;
+        width: 90%;
+        resize: none;
+        padding: 10px;
+        border-radius: 8px;
+        color: $dark_brown;
+        transition: all .3s ease-in-out;
+        &:focus {
+          outline: none;
+          background: darken($beje-lg, 5%);
+        }
+      }
+    }
+    & > .note__delete {
+      display: none;
+    }
+    &:hover > .note__delete {
+      display: block;
+    }
+  }
+
+  &__header {
+    color: $dark_brown;
+    margin: 0 0 5px;
+  }
+  &__list {
+    @include list-reset;
+    @include flex-column;
+    width: 100%;
+    align-items: flex-start;
+  }
+  &__item {
+    position: relative;
+    background: $dark_brown;
+    border-radius: 7px;
+    padding: 3px 10px;
+    margin: 5px 0;
+    transition: all .3s ease-in-out;
+    &--checked {
+      opacity: .5;
+    }
+    &:hover {
+      background: lighten($dark_brown, 5%);
+    }
+    input[type="checkbox"] {
+      appearance: none;
+      cursor: pointer;
+      margin: 0 5px 0 0;
+      width: 15px;
+      min-width: 15px;
+      height: 15px;
+      border-radius: 3px;
+      background: $beje-lg;
+      outline: none;
+      &:checked {
+        background-image: url('~@/assets/check.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    & > .note__delete {
+      display: none;
+    }
+    &:hover > .note__delete {
+      display: block;
+    }
+  }
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    transform: translate(50%, -50%);
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    background: $red;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%; 
+      width: 8px;
+      height: 2px;
+      background: $beje-lg;
+    }
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background: darken($red, 5%);
+    }
+  }
+  &__add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $dark_brown;
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    transition: all .3s ease-in-out;
+    color: $beje_dk;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 1rem;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background: lighten($dark_brown, 5%);
+    }
+  }
+  &__text {
+    display: flex;
+    align-items: center;
+    color: $beje-lg;
+    line-height: 1rem;
+    word-break: break-word;
+  }
+  &--new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px dashed $brown;
+    border-radius: 8px;
+    transition: all .3s ease-in-out;
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;  
+      border: 4px dashed $brown;
+      border-radius: 50%;
+      width: 175px;
+      height: 175px;
+      cursor: pointer;
+      &::before,
+      &::after {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        height: 20px;
+        width: 100px;
+        background: $brown;
+      }
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+    &:hover {
+      background: darken($dark_brown, 5%);
+    }
+  }
+}

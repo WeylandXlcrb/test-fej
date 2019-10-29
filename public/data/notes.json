@@ -1,0 +1,48 @@
+[
+  {
+    "name": "Покупки",
+    "list": [
+      {
+        "item": "Фрукты",
+        "checked": false
+      },
+      {
+        "item": "Овощи",
+        "checked": false
+      },
+      {
+        "item": "Камуфляж",
+        "checked": true
+      },
+      {
+        "item": "Коточесалка",
+        "checked": false
+      },
+      {
+        "item": "20 клоунов",
+        "checked": true
+      }
+    ]
+  },
+  {
+    "name": "Сходить",
+    "list": [
+      {
+        "item": "ЖКХ",
+        "checked": false
+      },
+      {
+        "item": "Foo",
+        "checked": false
+      },
+      {
+        "item": "Bar",
+        "checked": true
+      },
+      {
+        "item": "В бар",
+        "checked": false
+      }
+    ]
+  }
+]
